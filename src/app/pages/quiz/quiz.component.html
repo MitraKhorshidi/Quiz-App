@@ -4,17 +4,17 @@
     <p>Question {{ number }} of {{ total }}</p>
   </div>
   <form
-    (ngSubmit)="onSubmit()"
     class="flex flex-col justify-start rounded-md shadow-md p-8 gap-3"
   >
     <div class="flex flex-col gap-2">
       <p class="text-2xl font-semibold">{{ question }}</p>
       <div *ngFor="let option of options">
-        <input type="radio" name="option" id="option" value="option.label" />
+        <input type="radio" id="option" name="option" [value]="option.label" />
         <label for="option" class="ml-2 text-xl">{{ option.label }}</label>
       </div>
     </div>
     <button
+    type="button"
       *ngIf="!end"
       (click)="onNext()"
       class="bg-[#595BD4] hover:bg-[#4b4dc1] self-end px-2 py-1 text-white text-lg font-medium rounded-md shadow-md"

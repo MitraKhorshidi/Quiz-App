@@ -11,15 +11,15 @@ import { DataService } from 'src/app/services/data.service';
 export class QuizComponent implements OnInit {
 
   number: number = 0;
-  total?: number;
+  total: number = 0;
   questions?: Array<Question>;
   question?: string;
   options?: Array<Option>
 
-  end : boolean = false;
+  end: boolean = false;
 
 
-  constructor(private dataService: DataService ,private formBuilder :FormBuilder) { }
+  constructor(private dataService: DataService, private formBuilder: FormBuilder) { }
 
 
   ngOnInit(): void {
@@ -38,13 +38,14 @@ export class QuizComponent implements OnInit {
     this.question = object?.question;
     this.options = object?.options;
   }
+  
   onNext(): void {
-   
-    this.number += 1;
-    this.setQuestion(this.number);
-    console.log('num',this.number, this.question);
+    if (this.total - 1 == this.number) {
+      this.end = true;
+    }
+    this.setQuestion(this.number + 1);
   }
 
-  onSubmit(){}
+  onSubmit() { }
 
 }
