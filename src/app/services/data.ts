@@ -74,7 +74,7 @@ export default [
                 label: '<important>',
             },
             {
-                label: '<strong',
+                label: '<strong>',
                 answer:true
             },
             {
@@ -110,10 +110,11 @@ export default [
             },
             {
                 label: '<a href="url" target="_balnk"',
+                answer:true
             },
             {
                 label: '<a href="url" new',
-                answer:true
+                
             },
         ],
     },
