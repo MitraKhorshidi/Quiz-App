@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Option, Question } from 'src/app/model/questions';
 import { DataService } from 'src/app/services/data.service';
+import { ResultService } from 'src/app/services/result.service';
 
 @Component({
   selector: 'app-quiz',
@@ -18,8 +20,14 @@ export class QuizComponent implements OnInit {
 
   end: boolean = false;
 
+  answer = new FormControl('');
+  answers: Array<string> = [];
 
-  constructor(private dataService: DataService, private formBuilder: FormBuilder) { }
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private resultService: ResultService,
+  ) { }
 
 
   ngOnInit(): void {
@@ -38,14 +46,20 @@ export class QuizComponent implements OnInit {
     this.question = object?.question;
     this.options = object?.options;
   }
-  
+
   onNext(): void {
+    this.answers.push(this.answer.value || '');
+    console.log('answer', this.answers)
     if (this.total - 1 == this.number) {
       this.end = true;
     }
     this.setQuestion(this.number + 1);
+
   }
 
-  onSubmit() { }
+  onSubmit() {
+    this.resultService.post(this.answers);
+    this.router.navigate(["result"]);
+  }
 
 }
