@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Result } from '../model/questions';
 
 
 const CORRECT_ANSWERS = [
@@ -6,9 +8,9 @@ const CORRECT_ANSWERS = [
   '<h1>',
   '<br>',
   '<div style="background-color:yellow;>',
-  '<strong',
+  '<strong>',
   '/',
-  '<a href="url" new',
+  '<a href="url" target="_balnk"',
   '<ol>',
   '<input type="checkbox"/>',
   '<video>'
@@ -27,14 +29,19 @@ export class ResultService {
 
   }
 
-  getresult():number{
+  getResult(): Observable<Result> {
     let correctsNum: number = 0;
     for (let i = 0; i < this.answers.length; i++) {
       if (this.answers[i] === CORRECT_ANSWERS[i]) {
         correctsNum += 1;
       }
     }
-    return(correctsNum);
+    return new Observable((observer) => observer.next({
+      correctsNum: correctsNum,
+      totalNum: this.answers.length,
+      grade: correctsNum / this.answers.length * 100
+    }));
+
   }
 
 }
