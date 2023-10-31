@@ -58,6 +58,7 @@ export class QuizComponent implements OnInit {
   }
 
   onSubmit() {
+    this.answers.push(this.answer.value || '');
     this.resultService.post(this.answers);
     console.log('answer', this.answers)
     this.router.navigate(["result"]);

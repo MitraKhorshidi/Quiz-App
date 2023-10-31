@@ -1,1 +1,20 @@
-<p>result works!</p>
+<div
+  class="max-w-3xl mx-auto my-auto p-7 rounded-md shadow-md flex flex-col justify-center gap-y-3 items-center text-2xl font-medium"
+>
+  <h3 class="text-4xl font-medium">Result of HTML Test</h3>
+  <p>
+    Number of correct answers :
+    <span class="text-[#5254b8] font-semibold">
+      {{ result?.correctsNum }} of {{ result?.totalNum }} questions</span
+    >
+  </p>
+  <p>
+    Your garde is :
+    <span class="text-[#5254b8] font-semibold">{{ result?.grade }}/100</span>
+  </p>
+  <a
+    routerLink=""
+    class="bg-[#595BD4] hover:bg-[#4b4dc1] self-center px-4 py-2 text-white text-2xl font-medium rounded-md shadow-md"
+    >Try Again</a
+  >
+</div>

@@ -39,7 +39,7 @@ export class ResultService {
     return new Observable((observer) => observer.next({
       correctsNum: correctsNum,
       totalNum: this.answers.length,
-      grade: correctsNum / this.answers.length * 100
+      grade: Math.floor(correctsNum / this.answers.length * 100)
     }));
 
   }
