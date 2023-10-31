@@ -8,3 +8,9 @@ export interface Option {
     label: string,
     answer?: boolean,
 }
+
+export interface Result {
+    correctsNum :number,
+    totalNum : number,
+    grade : number,
+}
