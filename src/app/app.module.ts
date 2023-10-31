@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
+import { ResultComponent } from './pages/result/result.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { QuizComponent } from './pages/quiz/quiz.component';
     AppComponent,
     HomeComponent,
     QuizComponent,
+    ResultComponent,
 
   ],
   imports: [
